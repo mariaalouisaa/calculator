@@ -1,9 +1,3 @@
-const buttons = Array.from(document.querySelectorAll("button"));
-const plusButton = document.getElementById("plus");
-const minusButton = document.getElementById("minus");
-const timesButton = document.getElementById("times");
-const divideButton = document.getElementById("divide");
-const equalsButton = document.getElementById("equals");
 const currentTyping = document.getElementById("current-typing");
 const savedText = document.getElementById("previous-text");
 
@@ -25,17 +19,18 @@ const storeNum = (e) => {
   }
 };
 
-const operate = (action) => {
+const operate = (e) => {
+  action = e.target.innerHTML;
   if (storedTotal !== "") {
     operatorClicked === "+"
       ? (storedTotal = storedTotal + Number(value))
       : operatorClicked === "-"
       ? (storedTotal = storedTotal - Number(value))
-      : operatorClicked === "x"
+      : operatorClicked === "X"
       ? (storedTotal = storedTotal * Number(value))
-      : operatorClicked === "/"
+      : operatorClicked === "%"
       ? (storedTotal = storedTotal / Number(value))
-      : console.log("what now.");
+      : null;
     operatorClicked = action;
     savedText.innerHTML = `${storedTotal} ${action}`;
     currentTyping.innerHTML = "";
@@ -50,9 +45,12 @@ const operate = (action) => {
       ? (storedTotal = Number(storedValue) + Number(value))
       : operatorClicked === "-"
       ? (storedTotal = Number(storedValue) - Number(value))
-      : operatorClicked === "x"
+      : operatorClicked === "X"
       ? (storedTotal = Number(storedValue) * Number(value))
-      : (storedTotal = Number(storedValue) / Number(value));
+      : operatorClicked === "%"
+      ? (storedTotal = Number(storedValue) / Number(value))
+      : null;
+
     savedText.innerHTML = `${storedTotal} ${action}`;
     currentTyping.innerHTML = "";
     storedValue = "";
@@ -66,14 +64,14 @@ const sumOf = () => {
     if (
       operatorClicked === "+" ||
       operatorClicked === "-" ||
-      operatorClicked === "x" ||
-      operatorClicked === "/"
+      operatorClicked === "X" ||
+      operatorClicked === "%"
     ) {
       operatorClicked === "+"
         ? (storedTotal = Number(storedValue) + Number(value))
         : operatorClicked === "-"
         ? (storedTotal = Number(storedValue) - Number(value))
-        : operatorClicked === "x"
+        : operatorClicked === "X"
         ? (storedTotal = Number(storedValue) * Number(value))
         : (storedTotal = Number(storedValue) / Number(value));
     }
@@ -85,7 +83,7 @@ const sumOf = () => {
       ? (currentTyping.innerHTML = storedTotal + Number(value))
       : operatorClicked === "-"
       ? (currentTyping.innerHTML = storedTotal - Number(value))
-      : operatorClicked === "x"
+      : operatorClicked === "X"
       ? (currentTyping.innerHTML = storedTotal * Number(value))
       : (currentTyping.innerHTML = storedTotal / Number(value));
   }
@@ -101,22 +99,12 @@ document.getElementById("clear").addEventListener("click", () => {
   savedText.innerHTML = " ";
 });
 
-buttons.forEach((button) => button.addEventListener("click", storeNum));
+Array.from(document.querySelectorAll("button")).forEach((button) =>
+  button.addEventListener("click", storeNum)
+);
 
-plusButton.addEventListener("click", () => {
-  operate("+");
-});
+Array.from(document.querySelectorAll(".action")).forEach((a) =>
+  a.addEventListener("click", operate)
+);
 
-minusButton.addEventListener("click", () => {
-  operate("-");
-});
-
-divideButton.addEventListener("click", () => {
-  operate("/");
-});
-
-timesButton.addEventListener("click", () => {
-  operate("x");
-});
-
-equalsButton.addEventListener("click", sumOf);
+document.getElementById("equals").addEventListener("click", sumOf);
