@@ -12,7 +12,7 @@ let storedValue = "";
 let operatorClicked = "";
 let storedTotal = "";
 
-function storeNum(e) {
+const storeNum = (e) => {
   if (!isNaN(Number(e.target.innerHTML))) {
     item = Number(e.target.innerHTML);
     if (storedValue === "") {
@@ -23,9 +23,9 @@ function storeNum(e) {
       currentTyping.innerHTML = `${storedValue} ${operatorClicked} ${value}`;
     }
   }
-}
+};
 
-function operate(action) {
+const operate = (action) => {
   if (storedTotal !== "") {
     operatorClicked === "+"
       ? (storedTotal = storedTotal + Number(value))
@@ -59,9 +59,9 @@ function operate(action) {
     value = "";
     operatorClicked = action;
   }
-}
+};
 
-function sumOf() {
+const sumOf = () => {
   if (storedTotal === "") {
     if (
       operatorClicked === "+" ||
@@ -90,7 +90,7 @@ function sumOf() {
       : (currentTyping.innerHTML = storedTotal / Number(value));
   }
   savedText.innerHTML = " ";
-}
+};
 
 document.getElementById("clear").addEventListener("click", () => {
   value = "";
