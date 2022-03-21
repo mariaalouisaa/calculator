@@ -38,13 +38,13 @@
   margin: 5px 10px;
 }
 
-.button {
+button {
   border: 2px black solid;
   padding: 5px;
   background-color: wheat;
 }
 
-.button:hover {
+button:hover {
   background-color: cornflowerblue;
   transition: 0.3s ease-in-out;
   cursor: pointer;
