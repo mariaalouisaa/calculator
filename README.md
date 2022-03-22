@@ -4,14 +4,16 @@
 
 ---
 
-### Application features (so far):
+### Project features (so far):
 - 🐭 Onclick eventListners
 - ⚒️ DOM Manipulation
-- 🤖 JS ES6
+- 🤖 JS => ES6 {}
+- 🧪 Unit tests
+- 📚 Semantic HTML
+- 🔍 Impaired-user friendly
 
 --- 
 ### Still to do:
-- [ ] Unit tests
 - [ ] JS refeactoring
 - [ ] Allow users to use keyboard with window event listners
 - [ ] Accesability tests
