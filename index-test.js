@@ -115,28 +115,105 @@ test("C clears all text (chained sum)", () => {
   equal(actual[1], expected[1]);
 });
 
-// test("If user changes mind of operator the last selected is used", () => {
-//   document.querySelectorAll("button")[0].click();
-//   document.querySelectorAll("button")[7].click();
-//   document.querySelectorAll("button")[11].click();
-//   document.querySelectorAll("button")[3].click();
-//   document.querySelectorAll("button")[2].click();
-//   document.querySelectorAll("button")[12].click();
-//   const actual = document.querySelector("#current-typing").innerHTML;
-//   const expected = "4";
-//   equal(actual, expected);
-//   document.querySelectorAll("button")[14].click();
-// }); THIS NEEDS FIXING IN THE APP!
+test("chained + sum returns correct result", () => {
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[2].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[12].click();
+  const expected = "48";
+  const actual = document.querySelector("#current-typing").innerHTML;
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
 
-/// tests for saved text
-/// tests for various changed operations
+test("chained * sum returns correct result", () => {
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[11].click();
+  document.querySelectorAll("button")[2].click();
+  document.querySelectorAll("button")[11].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[12].click();
+  const expected = "132";
+  const actual = document.querySelector("#current-typing").innerHTML;
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
 
-// test for chained + opertations
-//   document.querySelectorAll("button")[0].click();
-//   document.querySelectorAll("button")[3].click();
-//   document.querySelectorAll("button")[2].click();
-//   document.querySelectorAll("button")[3].click();
-//   document.querySelectorAll("button")[4].click();
-//   document.querySelectorAll("button")[4].click();
-//   document.querySelectorAll("button")[12].click();
-//  const expected = "48";
+test("chained sum with mixed operator (- then %) returns correct result", () => {
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[13].click();
+  document.querySelectorAll("button")[13].click();
+  document.querySelectorAll("button")[7].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[15].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[12].click();
+  const expected = "24";
+  const actual = document.querySelector("#current-typing").innerHTML;
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
+
+//------ (FIX INDEX JS - this test fails!) ----------!!
+test("If user changes mind of operator the last selected is used", () => {
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[7].click();
+  document.querySelectorAll("button")[11].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[2].click();
+  document.querySelectorAll("button")[12].click();
+  const actual = document.querySelector("#current-typing").innerHTML;
+  const expected = "4";
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
+
+//------ (FIX INDEX JS - this test fails!)-----------!!
+test("If user changes mind of operator the last selected is used (chained sum)", () => {
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[2].click();
+  document.querySelectorAll("button")[7].click();
+  document.querySelectorAll("button")[11].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[12].click();
+  const actual = document.querySelector("#current-typing").innerHTML;
+  const expected = "48";
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
+
+//-------TO DO: Tests for saved text
+
+test("chained + sum shows current total in saved text", () => {
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[0].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[1].click();
+  document.querySelectorAll("button")[2].click();
+  document.querySelectorAll("button")[3].click();
+  const expected = "34 +";
+  const actual = document.querySelector("#previous-text").innerHTML;
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
+
+test("saved text shows correct sum on - of = total", () => {
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[4].click();
+  document.querySelectorAll("button")[3].click();
+  document.querySelectorAll("button")[1].click();
+  document.querySelectorAll("button")[2].click();
+  document.querySelectorAll("button")[12].click();
+  document.querySelectorAll("button")[7].click();
+  const expected = "67 -";
+  const actual = document.querySelector("#previous-text").innerHTML;
+  equal(actual, expected);
+  document.querySelectorAll("button")[14].click();
+});
