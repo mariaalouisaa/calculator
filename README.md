@@ -16,8 +16,6 @@
 ### Still to do:
 - [ ] JS refeactoring
 - [ ] Allow users to use keyboard with window event listners
-- [ ] Final accesability tests
-- [ ] CSS refactor
 
 *(Please see issues for more info)*
 
