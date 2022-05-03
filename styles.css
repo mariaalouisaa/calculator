@@ -1,11 +1,12 @@
 .container {
-  border: 4px solid black;
+  border: 3px solid black;
   width: 300px;
   height: 400px;
   margin: 40px auto;
-  background-color: darkred;
+  background-color: rgb(130, 190, 215);
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 15px;
+  box-shadow: 1px 1px 1px;
 }
 
 .display {
@@ -13,22 +14,23 @@
   height: 55%;
   border: solid black 2px;
   margin: 5px 10px;
-  background-color: rgb(36, 36, 36);
+  background-color: rgba(177, 177, 177, 0.906);
   grid-template-rows: 1fr 1fr;
 }
 .current-typing {
   align-self: end;
   text-align: right;
   padding: 6px;
-  color: white;
+  color: rgb(45, 45, 45);
   font-weight: bolder;
   font-size: 30px;
 }
 
 .previous-text {
   text-align: right;
-  color: rgb(236, 236, 77);
+  color: rgb(245, 51, 51);
   padding: 6px;
+  font-weight: 600;
 }
 .buttons {
   display: grid;
@@ -47,7 +49,7 @@ button {
 }
 
 button:hover {
-  background-color: cornflowerblue;
+  background-color: rgba(248, 89, 57, 0.934);
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
